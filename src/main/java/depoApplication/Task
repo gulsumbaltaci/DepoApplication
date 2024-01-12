@@ -1,0 +1,84 @@
+ /*
+     * basit bir depo projesi
+     *
+     * Calisan bir fabrikada uygulanan bir sistem olan depo uygulamasidir.
+     *
+     * 1-) burada oncelikle urunun tanimlamasi  yapilir.
+     id
+     urunIsmi
+     uretici
+     miktar
+     birim ve
+     raf (6 adet fields mevcut)
+     *
+     * 2-) methodlar olusturacagiz.
+     *      urunTanimlama   ==>  urunun ismi, ureticisi ve birimi girilecek. id  alınacak.  (miktar 0) (raf null )
+     *
+     *      urunListele     ==> tanimlanan urunler listelenecek. urunun adeti ve raf numarasi tanimlama yapilmadiysa default deger gorunsun.
+            Printf
+     *
+     *      urunGirisi      ==> giris yapmak istedigimiz urnunun id numarasi ile girecegiz.
+     *
+     *      urunuRafaKoy    ==> listeden urunu sececegiz ve id numarasina gore urunu rafa koyacagiz.
+     *
+     *      urunCikisi      ==> listeden urunu sececegiz ve urunun cikis yapcagiz. burada urun listesinden sadece miktarda degisiklik yapilacak.
+     *                          urun adedi 0dan az olamaz. 0 olunca urun tanimlamasi silinmesin. sadece miktari 0 olsun.
+     *      ===> yaptigimiz tum degisiklikler listede de gorunsun.
+     *
+     *
+     *          id      ismi    ureticisi   miktari     birimi      raf
+     *      ---------------------------------------------------------------
+     *      or: 1000     un     hekimoglu   0           cuval       null
+     *
+     *      urunGirisi      ==> id:1000  urun girisi :5
+     *      urunListele     ==>
+     *
+     *          id      ismi    ureticisi   miktari     birimi      raf
+     *      ---------------------------------------------------------------
+     *      or: 1000     un     hekimoglu   5           cuval       null
+     *
+     *      urunuRafaKoy    ==> id:1000 raf : raf1
+     *      urunListele     ==>
+     *          id      ismi    ureticisi   miktari     birimi      raf
+     *      ---------------------------------------------------------------
+     *      or: 1000     un     hekimoglu   5           cuval       raf1
+     *
+     *      urunCikisi      ==> id 1000: urun cikis : 3 (kalan 2 cuval un)
+     *      urunListele     ==>
+     *          id      ismi    ureticisi   miktari     birimi      raf
+     *      ---------------------------------------------------------------
+     *      or: 1000     un     hekimoglu   2           cuval       raf1
+     *
+     *
+                                     *** DepoUrunApplication ***
+     //DepoUrunApplication mini projemiz calisan bir fabrikada uygulanan sistemi simulize eden bir depo uygulamasidir.
+     //Bu proje 4 class tan olumaktadir. 1)DepoApplication    2)Urun    3)Urunservisler
+            /*try-catch Kullanımı: Kullanıcının sayı dışında bir giriş yapması durumunda
+             InputMismatchException hatası oluşabilir.
+             Bu durumu ele almak için try-catch blokları kullandik,
+             kullanıcıdan beklenmeyen bir girdi geldiğinde programın çökmesini önledi.*/
+     */
+      // 2) Urun Sinifi
+     //Bu sinifin amaci:
+     //Bu sınıf bir pojo sinifidir. Yani her ürünün özelliklerini (id, urunIsmi, uretici, miktar, birim rafNo) içeren bir modeldir.
+     //Bu sınıfın sorumluluğu, ürünle ilgili bilgileri saklamak ve yönetmektir.
+     //Sinifta urune ait private fieldlar,bunalra ulasmak ve uzerinde degisiklik yapmak icin getter ve setter metodlari,
+     // bir default,bir paremetreli constructor ve toString metodunu icermektedir(urun objesinin string temsili).
+     // Kullanıcı Girişi Yönetimi olarak : Kullanıcıdan sayısal ve metinsel giriş almak için kullanılan yardımcı metodlar ekledik
+         // (kullaniciSayiGirisiAl, kullaniciMetinGirisiAl) iyi bir uygulama. Bu, kod tekrarını azaltır ve girişlerin doğruluğunu sağlar.
+         // Kullanıcıdan sayısal giriş almak için yardımcı metod
+/*
+Ekstra Notlar: Bu kisim projede sunulmayacak
+Alternatif veri dogrulama
+private DepoYonetimi depoYonetimi;
+    public DepoApplication() {
+        depoYonetimi = new DepoYonetimi(); // DepoYonetimi nesnesi oluşturuluyor
+    }
+    // Örnek bir metod
+    public void urunListele() {
+        depoYonetimi.urunListele(); // DepoYonetimi sınıfının metodunu kullanıyor
+    }
+    Projelerin çoğunda, kompozisyon tercih edilir (obje kullanimi), çünkü daha esnek bir yapı sağlar ve
+    ileride sistemde yapılacak değişiklikleri daha kolay hale getirir.
+    Ayrıca, sınıflar arasında daha temiz ve anlaşılır bir ilişki kurmanıza yardımcı olur.
+ */
